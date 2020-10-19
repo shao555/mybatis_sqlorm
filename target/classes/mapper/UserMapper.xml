@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cs.mapper.UserMapper">
+    <!--根据用户名模糊查询用户信息(参数:字符串)-->
+    <select id="findByUserNameInfo" resultType="User">
+        select * from smbms_user where userName like concat('%',#{name},'%')
+    </select>
+    <!--根据用户名和角色id模糊查询用户信息(参数:用户对象)-->
+    <select id="findByUserNameAndRoleInfo" resultType="User">
+        select * from smbms_user where userName like
+         concat('%',#{name},'%') and userRole = #{userRole}
+    </select>
+</mapper>
